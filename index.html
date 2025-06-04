@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEDI BHATAPARA - Team Contacts</title>
+  <style>
+    :root {
+      --gold: #fabe12;
+      --blue: #2a3775;
+      --blue-light: #556ab1;
+      --shadow-blue: rgba(42, 55, 117, 0.3);
+      --shadow-gold: rgba(250, 189, 18, 0.4);
+      --whatsapp-green: #25d366;
+      --whatsapp-green-hover: #1ebe56;
+      --background-yellow: #fff3cd;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-yellow);
+      margin: 0;
+      padding: 30px 15px 40px;
+      color: var(--blue);
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+    }
+
+    @keyframes shimmer-text {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+    header h1 {
+      color: var(--blue);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin: 0;
+      font-size: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(170, 170, 170, 0.4);
+      background: linear-gradient(90deg, var(--blue) 25%, #fabe12 50%, var(--blue) 75%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-text 3s linear infinite;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card, .manager-card {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.15),
+        0 4px 16px 0 rgba(31, 38, 135, 0.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 30px 25px;
+      color: var(--blue);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes shimmer-run {
+      0% {
+        background-position: -300% 0;
+      }
+      100% {
+        background-position: 300% 0;
+      }
+    }
+
+    .manager-card {
+      max-width: 600px;
+      flex-basis: 100%;
+      padding: 45px 35px;
+      border: 2px solid var(--gold);
+      box-shadow:
+        0 12px 40px 0 rgba(250, 189, 18, 0.4),
+        0 8px 32px 0 rgba(250, 189, 18, 0.3);
+      font-weight: 700;
+      font-size: 1.25rem;
+      background: linear-gradient(
+        90deg,
+        rgba(250, 189, 18, 0.25) 0%,
+        rgba(255, 255, 255, 0.4) 20%,
+        rgba(250, 189, 18, 0.25) 40%,
+        rgba(255, 255, 255, 0.4) 60%,
+        rgba(250, 189, 18, 0.25) 80%,
+        rgba(255, 255, 255, 0.4) 100%
+      );
+      background-size: 400% 100%;
+      animation: shimmer-run 15s linear infinite;
+    }
+
+    .manager-card:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 20px 50px 0 rgba(250, 189, 18, 0.6),
+        0 10px 40px 0 rgba(250, 189, 18, 0.5);
+    }
+
+    .card {
+      width: 270px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow:
+        0 15px 35px 0 rgba(42, 55, 117, 0.4),
+        0 10px 30px 0 rgba(42, 55, 117, 0.3);
+    }
+
+    img {
+      border-radius: 15px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(42, 55, 117, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img, .manager-card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--gold);
+    }
+
+    h2 {
+      margin: 10px 0 8px;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--blue);
+      text-shadow: 1px 1px 2px rgba(255 255 255 / 0.6);
+    }
+
+    .designation {
+      margin-bottom: 18px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--blue);
+      text-shadow: none;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    a.button {
+      display: flex;
+      align-items: center;  /* आइकन और टेक्स्ट vertical center */
+      gap: 10px;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      color: white;
+      user-select: none;
+      cursor: pointer;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+    }
+
+    a.button img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.25));
+      transition: transform 0.3s ease;
+    }
+    a.button:hover img {
+      transform: scale(1.2);
+    }
+
+    a.call-btn {
+      background-color: var(--gold);
+      color: var(--blue);
+      box-shadow: 0 6px 16px rgba(250, 189, 18, 0.7);
+    }
+    a.call-btn:hover {
+      background-color: #e5b108;
+      box-shadow: 0 8px 24px #e5b108;
+      color: #1f2b4a;
+    }
+
+    a.whatsapp-btn {
+      background-color: var(--whatsapp-green);
+      color: white;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.7);
+    }
+    a.whatsapp-btn:hover {
+      background-color: var(--whatsapp-green-hover);
+      box-shadow: 0 8px 24px var(--whatsapp-green-hover);
+      color: #e6f3ea;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card, .manager-card {
+        width: 90%;
+        flex-basis: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/HLqGhJ0L/NEW-PPT-Format.jpg" alt="SEDI Logo" />
+  <h1>SEDI Bhatapara Team</h1>
+</header>
+
+<div class="container">
+  <!-- Manager Card -->
+  <div class="card manager-card">
+    <img src="https://i.postimg.cc/tCf2H5j5/Whats-App-Image-2025-05-15-at-2-23-57-PM.jpg" alt="Mithun Paliwal" />
+    <h2>Mithun Paliwal</h2>
+    <p class="designation">Zonal Manager</p>
+    <div class="btn-group">
+      <a href="tel:+919826161984" class="button call-btn" aria-label="Call">
+        <!-- Updated Call SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a3775" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7 1.22 1 1 0 01.89 1v3.39a1 1 0 01-1 1A17.93 17.93 0 013 6a1 1 0 011-1h3.39a1 1 0 011 .89 11.72 11.72 0 001.22 3.7 1 1 0 01-.21 1.11z"/>
+        </svg>
+        Call
+      </a>
+      <a href="https://wa.me/919826161984" class="button whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <!-- Updated WhatsApp SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M20.52 3.48a11.885 11.885 0 00-16.8 0 11.825 11.825 0 00-3.46 8.36c0 2.32.7 4.58 2.03 6.45L2 22l4.3-1.12a11.776 11.776 0 006.46 2.03 11.89 11.89 0 008.37-3.46 11.887 11.887 0 000-16.93zm-8.33 15.17a8.008 8.008 0 01-4.15-1.14l-.3-.18-2.45.64.65-2.39-.2-.31a8.044 8.044 0 111.41 3.38zM16 14.9c-.26 0-1.52-.73-1.75-.81-.23-.07-.4-.1-.57.1-.18.2-.68.81-.83.98-.15.17-.3.2-.56.07a7.3 7.3 0 01-2.14-1.31 7.97 7.97 0 01-1.48-1.83c-.15-.26 0-.4.11-.52.11-.11.24-.28.37-.42.13-.14.17-.24.26-.4.08-.16.04-.29-.02-.4-.07-.11-.57-1.37-.78-1.87-.2-.5-.41-.43-.57-.44-.15 0-.32-.01-.49-.01-.17 0-.4.06-.61.29-.22.23-.83.8-.83 1.94s.85 2.25.97 2.4c.12.15 1.68 2.57 4.07 3.6a6.8 6.8 0 001.9.59c.26.04.5.03.69.02.21-.01.65-.26.74-.52.09-.26.09-.48.06-.52-.03-.05-.11-.08-.23-.14z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Other Cards -->
+  <div class="card">
+    <img src="https://i.postimg.cc/qR6LNHw5/6123176029292969392.jpg" alt="Vikash Verma" />
+    <h2>Vikash Verma</h2>
+    <p class="designation">IT Trainer</p>
+    <div class="btn-group">
+      <a href="tel:+918269351561" class="button call-btn" aria-label="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a3775" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7 1.22 1 1 0 01.89 1v3.39a1 1 0 01-1 1A17.93 17.93 0 013 6a1 1 0 011-1h3.39a1 1 0 011 .89 11.72 11.72 0 001.22 3.7 1 1 0 01-.21 1.11z"/>
+        </svg>
+        Call
+      </a>
+      <a href="https://wa.me/918269351561" class="button whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M20.52 3.48a11.885 11.885 0 00-16.8 0 11.825 11.825 0 00-3.46 8.36c0 2.32.7 4.58 2.03 6.45L2 22l4.3-1.12a11.776 11.776 0 006.46 2.03 11.89 11.89 0 008.37-3.46 11.887 11.887 0 000-16.93zm-8.33 15.17a8.008 8.008 0 01-4.15-1.14l-.3-.18-2.45.64.65-2.39-.2-.31a8.044 8.044 0 111.41 3.38zM16 14.9c-.26 0-1.52-.73-1.75-.81-.23-.07-.4-.1-.57.1-.18.2-.68.81-.83.98-.15.17-.3.2-.56.07a7.3 7.3 0 01-2.14-1.31 7.97 7.97 0 01-1.48-1.83c-.15-.26 0-.4.11-.52.11-.11.24-.28.37-.42.13-.14.17-.24.26-.4.08-.16.04-.29-.02-.4-.07-.11-.57-1.37-.78-1.87-.2-.5-.41-.43-.57-.44-.15 0-.32-.01-.49-.01-.17 0-.4.06-.61.29-.22.23-.83.8-.83 1.94s.85 2.25.97 2.4c.12.15 1.68 2.57 4.07 3.6a6.8 6.8 0 001.9.59c.26.04.5.03.69.02.21-.01.65-.26.74-.52.09-.26.09-.48.06-.52-.03-.05-.11-.08-.23-.14z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.postimg.cc/jqz5Krk2/Whats-App-Image-2025-05-16-at-10-33-06-AM.jpg" alt="raj" />
+    <h2>Raj Mahobia</h2>
+    <p class="designation">Retail Trainer</p>
+    <div class="btn-group">
+      <a href="tel:+919098968001" class="button call-btn" aria-label="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a3775" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7 1.22 1 1 0 01.89 1v3.39a1 1 0 01-1 1A17.93 17.93 0 013 6a1 1 0 011-1h3.39a1 1 0 011 .89 11.72 11.72 0 001.22 3.7 1 1 0 01-.21 1.11z"/>
+        </svg>
+        Call
+      </a>
+      <a href="https://wa.me/919098968001" class="button whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M20.52 3.48a11.885 11.885 0 00-16.8 0 11.825 11.825 0 00-3.46 8.36c0 2.32.7 4.58 2.03 6.45L2 22l4.3-1.12a11.776 11.776 0 006.46 2.03 11.89 11.89 0 008.37-3.46 11.887 11.887 0 000-16.93zm-8.33 15.17a8.008 8.008 0 01-4.15-1.14l-.3-.18-2.45.64.65-2.39-.2-.31a8.044 8.044 0 111.41 3.38zM16 14.9c-.26 0-1.52-.73-1.75-.81-.23-.07-.4-.1-.57.1-.18.2-.68.81-.83.98-.15.17-.3.2-.56.07a7.3 7.3 0 01-2.14-1.31 7.97 7.97 0 01-1.48-1.83c-.15-.26 0-.4.11-.52.11-.11.24-.28.37-.42.13-.14.17-.24.26-.4.08-.16.04-.29-.02-.4-.07-.11-.57-1.37-.78-1.87-.2-.5-.41-.43-.57-.44-.15 0-.32-.01-.49-.01-.17 0-.4.06-.61.29-.22.23-.83.8-.83 1.94s.85 2.25.97 2.4c.12.15 1.68 2.57 4.07 3.6a6.8 6.8 0 001.9.59c.26.04.5.03.69.02.21-.01.65-.26.74-.52.09-.26.09-.48.06-.52-.03-.05-.11-.08-.23-.14z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+<div class="card">
+    <img src="https://i.postimg.cc/rwYSXF2t/Whats-App-Image-2025-05-15-at-3-00-09-PM.jpg" alt="Archana" />
+    <h2>Archana Tiwari</h2>
+    <p class="designation">Soft Skill Trainer</p>
+    <div class="btn-group">
+      <a href="tel:+918319395003" class="button call-btn" aria-label="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a3775" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7 1.22 1 1 0 01.89 1v3.39a1 1 0 01-1 1A17.93 17.93 0 013 6a1 1 0 011-1h3.39a1 1 0 011 .89 11.72 11.72 0 001.22 3.7 1 1 0 01-.21 1.11z"/>
+        </svg>
+        Call
+      </a>
+      <a href="https://wa.me/+918319395003" class="button whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M20.52 3.48a11.885 11.885 0 00-16.8 0 11.825 11.825 0 00-3.46 8.36c0 2.32.7 4.58 2.03 6.45L2 22l4.3-1.12a11.776 11.776 0 006.46 2.03 11.89 11.89 0 008.37-3.46 11.887 11.887 0 000-16.93zm-8.33 15.17a8.008 8.008 0 01-4.15-1.14l-.3-.18-2.45.64.65-2.39-.2-.31a8.044 8.044 0 111.41 3.38zM16 14.9c-.26 0-1.52-.73-1.75-.81-.23-.07-.4-.1-.57.1-.18.2-.68.81-.83.98-.15.17-.3.2-.56.07a7.3 7.3 0 01-2.14-1.31 7.97 7.97 0 01-1.48-1.83c-.15-.26 0-.4.11-.52.11-.11.24-.28.37-.42.13-.14.17-.24.26-.4.08-.16.04-.29-.02-.4-.07-.11-.57-1.37-.78-1.87-.2-.5-.41-.43-.57-.44-.15 0-.32-.01-.49-.01-.17 0-.4.06-.61.29-.22.23-.83.8-.83 1.94s.85 2.25.97 2.4c.12.15 1.68 2.57 4.07 3.6a6.8 6.8 0 001.9.59c.26.04.5.03.69.02.21-.01.65-.26.74-.52.09-.26.09-.48.06-.52-.03-.05-.11-.08-.23-.14z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+
+</div>
+<div class="card">
+    <img src="https://i.postimg.cc/V6jF9QrZ/Whats-App-Image-2025-05-15-at-2-13-42-PM.jpg" alt="Hemlata" />
+    <h2>Hemlata Namdeo </h2>
+    <p class="designation">Mobilizer</p>
+    <div class="btn-group">
+      <a href="tel:+917089019505" class="button call-btn" aria-label="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a3775" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6.62 10.79a15.054 15.054 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.7 1.22 1 1 0 01.89 1v3.39a1 1 0 01-1 1A17.93 17.93 0 013 6a1 1 0 011-1h3.39a1 1 0 011 .89 11.72 11.72 0 001.22 3.7 1 1 0 01-.21 1.11z"/>
+        </svg>
+        Call
+      </a>
+      <a href="https://wa.me/+917089019505" class="button whatsapp-btn" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M20.52 3.48a11.885 11.885 0 00-16.8 0 11.825 11.825 0 00-3.46 8.36c0 2.32.7 4.58 2.03 6.45L2 22l4.3-1.12a11.776 11.776 0 006.46 2.03 11.89 11.89 0 008.37-3.46 11.887 11.887 0 000-16.93zm-8.33 15.17a8.008 8.008 0 01-4.15-1.14l-.3-.18-2.45.64.65-2.39-.2-.31a8.044 8.044 0 111.41 3.38zM16 14.9c-.26 0-1.52-.73-1.75-.81-.23-.07-.4-.1-.57.1-.18.2-.68.81-.83.98-.15.17-.3.2-.56.07a7.3 7.3 0 01-2.14-1.31 7.97 7.97 0 01-1.48-1.83c-.15-.26 0-.4.11-.52.11-.11.24-.28.37-.42.13-.14.17-.24.26-.4.08-.16.04-.29-.02-.4-.07-.11-.57-1.37-.78-1.87-.2-.5-.41-.43-.57-.44-.15 0-.32-.01-.49-.01-.17 0-.4.06-.61.29-.22.23-.83.8-.83 1.94s.85 2.25.97 2.4c.12.15 1.68 2.57 4.07 3.6a6.8 6.8 0 001.9.59c.26.04.5.03.69.02.21-.01.65-.26.74-.52.09-.26.09-.48.06-.52-.03-.05-.11-.08-.23-.14z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+
+</body>
+</html>
